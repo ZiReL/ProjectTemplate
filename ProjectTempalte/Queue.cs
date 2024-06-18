@@ -85,7 +85,15 @@ namespace ProjectTempalte
         // Не забудьте уменьшить размер и вернуть элемент
         public T Dequeue()
         {
-            return default(T); // Заглушка
+            if (Size == 0)
+                throw new InvalidOperationException("Queue is empty");
+            T help = _values[_head];
+            if (_head == _tail)
+                _head = 0;
+            else
+                _head++;
+            _size--;
+            return help;
         }
 
         // TODO:
@@ -93,12 +101,14 @@ namespace ProjectTempalte
         // Возвращаем элемент
         public T Peek()
         {
-            return default(T); // Заглушка
+            if (Size == 0)
+                throw new InvalidOperationException("Queue is empty");
+            return _values[_head];
         }
 
         public bool IsEmpty()
         {
-            return true; // TODO: поменять
+            return Size == 0;
         }
     }
 }

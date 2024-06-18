@@ -37,6 +37,12 @@ namespace ProjectTempalte
             int[] mas = { 10, 20, 30 };
             Queue<int> testq = new Queue<int>(mas, 3);
             testq.Enqueue(40);
+            Console.WriteLine(testq.Dequeue());
+            Console.WriteLine(testq.Peek());
+            Console.WriteLine(testq.Dequeue());
+            Console.WriteLine(testq.Dequeue());
+            Console.WriteLine(testq.Dequeue());
+            Console.WriteLine(testq.IsEmpty());
             Console.WriteLine("-------");
         }
         // При работе с файлами, создавайте и наполняйте их сами. Но не забывайти использовать относительные пути
