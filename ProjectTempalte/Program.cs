@@ -7,8 +7,15 @@ namespace ProjectTempalte
         static void StackTask()
         {
             Console.WriteLine("Stack Task");
-            Console.WriteLine("Здесь пока ничего нет"); // сотрите эту строку после реализации класса Stack
-                                                        // и как-то протестируйте ваш код
+            int[] mas = {10, 20, 30};
+            Stack<int> teststack = new Stack<int>(mas, 3);
+            Console.WriteLine(teststack.Peek());
+            teststack.Push(40);
+            Console.WriteLine(teststack.Peek());
+            teststack.Push(50);
+            Console.WriteLine(teststack.Peek());
+            teststack.Pop();
+            Console.WriteLine(teststack.Peek());
             Console.WriteLine("-------");
         }
         static void DeepLookStackTask()

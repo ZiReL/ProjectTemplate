@@ -8,16 +8,20 @@ namespace ProjectTempalte
 {
     public class Stack<T>
     {
-        private T[] values; // здесь будут храниться значения
-        private int size;   // количество значений, хранимых на стеке. но не фактических, а "валидных"
+        private T[] _values; // здесь будут храниться значения
+        private int _size;   // количество значений, хранимых на стеке. но не фактических, а "валидных"
+        private int _capacity;
 
-        public int Size { get => size; }
+        public int Size => _size;
 
         // TODO:
         // Добавить параметр по умолчанию capacity
         // Иницилизировать поля класса в соответствии с принимаемыми аргументами
-        public Stack()
+        public Stack(T[] values, int capacity)
         {
+            _values = values;
+            _capacity = capacity;
+            _size = _values.Length;
         }
 
         // TODO:
@@ -29,6 +33,18 @@ namespace ProjectTempalte
             // Для изменения размера массива можно
             // либо создайте новый массив и перенесите в него элементы из старого,
             // либо воспользуйтесь функцией Array.Resize
+            if (Size == _capacity)
+            {
+                _capacity *= 2;
+                Array.Resize(ref _values, _capacity); 
+                _values[_size] = value;
+                _size += 1;
+            }
+            else
+            {
+                _values[_size] = value;
+                _size += 1;
+            }
         }
 
         // TODO:
@@ -37,19 +53,28 @@ namespace ProjectTempalte
         // Если да, вернуть последний элемент и "удалить верхний элемент" (уменьшить значение size)
         public T Pop()
         {
-            return default(T); // Заглушка
+            if (Size == 0)
+                throw new Exception("Empty");
+            else
+            {
+                _size -= 1;
+                return _values[_size];
+            }
         }
 
         // TODO:
         // Аналогично предыдущему, но ничего не удаляем
         public T Peek()
         {
-            return default(T); // Заглушка
+            if (Size == 0)
+                throw new Exception("Empty");
+            else
+                return _values[_size - 1];
         }
 
         public bool IsEmpty()
         {
-            return true; // TODO: поменять
+            return Size == 0;
         }
     }
 }
