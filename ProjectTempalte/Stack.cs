@@ -13,7 +13,7 @@ namespace ProjectTempalte
         private int _capacity;
 
         public int Size => _size;
-        public T[] Values => _values;
+        protected T[] Values => _values;
 
         // TODO:
         // Добавить параметр по умолчанию capacity
