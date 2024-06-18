@@ -22,8 +22,13 @@ namespace ProjectTempalte
         static void DeepLookStackTask()
         {
             Console.WriteLine("DeepLookStack Task");
-            Console.WriteLine("Здесь пока ничего нет"); // сотрите эту строку после реализации класса DeepLookStack
-                                                        // и как-то протестируйте ваш код
+            int[] mas = { 10, 20, 30 };
+            DeepLookStack<int> testdlt = new DeepLookStack<int>(mas, 3);
+            Console.WriteLine(testdlt.Peek(1));
+            Console.WriteLine(testdlt.Peek(2));
+            Console.WriteLine(testdlt.Peek(3));
+            testdlt.Push(40);
+            Console.WriteLine(testdlt.Peek(4));
             Console.WriteLine("-------");
         }
         static void QueueTask()
