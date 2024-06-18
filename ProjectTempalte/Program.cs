@@ -34,8 +34,9 @@ namespace ProjectTempalte
         static void QueueTask()
         {
             Console.WriteLine("Queue Task");
-            Console.WriteLine("Здесь пока ничего нет"); // сотрите эту строку после реализации класса Queue
-                                                        // и как-то протестируйте ваш код
+            int[] mas = { 10, 20, 30 };
+            Queue<int> testq = new Queue<int>(mas, 3);
+            testq.Enqueue(40);
             Console.WriteLine("-------");
         }
         // При работе с файлами, создавайте и наполняйте их сами. Но не забывайти использовать относительные пути

@@ -12,23 +12,29 @@ namespace ProjectTempalte
     // и создана для ознакомления с принципом работы очереди
     public class Queue<T>
     {
-        private T[] values; // здесь будут храниться значения
-        private int head; // голова, индекс, указывает на начало очереди
-        private int tail; // хвост, индекс, указывает на последний элемент очереди
-        private int size; // количество элементов в массиве. но не фактических, а "валидных", между head и tail.
+        private T[] _values; // здесь будут храниться значения
+        private int _head; // голова, индекс, указывает на начало очереди
+        private int _tail; // хвост, индекс, указывает на последний элемент очереди
+        private int _size; // количество элементов в массиве. но не фактических, а "валидных", между head и tail.
+        private int _capacity;
 
-        public int Size { get => size; }
+        public int Size => _size;
 
         // TODO:
         // Добавить параметр по умолчанию capacity
         // Иницилизировать поля класса в соответствии с принимаемыми аргументами
-        public Queue()
+        public Queue(T[] values, int capacity)
         {
+            _values = values;
+            _head = 0;
+            _tail = values.Length - 1;
+            _size = values.Length;
+            _capacity = capacity;
         }
 
         private void FindOrCreateEmptySpace()
         {
-            if (head != 0) // Если есть свободное место справа слева
+            if (_head != 0) // Если есть свободное место справа слева
             {
                 // TODO:
                 // Воспользуйтесь функцией Array.Copy для переноса валидных элементов массива влево.
@@ -38,6 +44,9 @@ namespace ProjectTempalte
                 // Индекс куда начинать копировать - 0
                 // Сколько копировать - size
                 // Далее обновите значения tail и head
+                Array.Copy(_values, _head, _values, 0, _size);
+                _head = 0;
+                _tail = _size - 1;
 
 
                 // В итоге поменяли массив так, что все его валидные элементы находятся в его начале.
@@ -48,6 +57,11 @@ namespace ProjectTempalte
 
             // TODO:
             // Измененить размер массива, обновите tail и head
+            _capacity *= 2;
+            Array.Resize(ref _values, _capacity);
+            _size = _tail - _head + 1;
+            _head = 0;
+            _tail = _size - 1;
         }
 
         // TODO:
@@ -56,6 +70,11 @@ namespace ProjectTempalte
         // Добавить элемент и увеличить значение size и tail
         public void Enqueue(T value)
         {
+            if (_tail == _values.Length - 1)
+                FindOrCreateEmptySpace();
+            _values[_size] = value;
+            _size++;
+            _tail++;
         }
 
         // TODO:
