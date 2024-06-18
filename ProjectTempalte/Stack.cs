@@ -38,12 +38,12 @@ namespace ProjectTempalte
                 _capacity *= 2;
                 Array.Resize(ref _values, _capacity); 
                 _values[_size] = value;
-                _size += 1;
+                _size++;
             }
             else
             {
                 _values[_size] = value;
-                _size += 1;
+                _size++;
             }
         }
 
@@ -57,7 +57,7 @@ namespace ProjectTempalte
                 throw new Exception("Empty");
             else
             {
-                _size -= 1;
+                _size--;
                 return _values[_size];
             }
         }

@@ -16,6 +16,7 @@ namespace ProjectTempalte
             Console.WriteLine(teststack.Peek());
             teststack.Pop();
             Console.WriteLine(teststack.Peek());
+            Console.WriteLine(teststack.IsEmpty());
             Console.WriteLine("-------");
         }
         static void DeepLookStackTask()
