@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 public class Functions
@@ -11,7 +12,10 @@ public class Functions
     // Также должны быть удалены знаки препинания
     public static List<string> ReadFromFile(string filePath)
     {
-        return new(); // Заглушка
+        var list = new List<string>();
+        char[] delimiterChars = { ' ', '\n' };
+        list = Regex.Replace(File.ReadAllText(filePath).ToLower(), "[!\"\',.:;?\r]", string.Empty).Split(delimiterChars).ToList();
+        return list;
     }
 
     // TODO:
@@ -29,7 +33,9 @@ public class Functions
 
     public static int MinDigit(int n)
     {
-        return 0; // Заглушка
+        if (n < 10)
+            return n;
+        return Math.Min(n % 10, MinDigit(n / 10));
     }
 }
 
