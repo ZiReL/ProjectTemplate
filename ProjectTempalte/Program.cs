@@ -99,11 +99,21 @@ namespace ProjectTempalte
         static void DictionaryTask()
         {
             Console.WriteLine("Dictionary Task");
-            Console.WriteLine("Здесь пока ничего нет"); // сотрите эту строку после выполнения условий из TODO ниже
+
             // TODO: создать Dictionary, где ключ - имя студента, а значение - лист его оценок по предметам за семестр.
             // Заполните словарь для 3-4 студентов.
             // Запросите у пользователя строку - имя студента, по которому он хочет узнать среднюю оценку.
             // Выведите результат. Вместо явных циклов используйте LINQ.
+
+            Dictionary<string, List<int>> student = new Dictionary<string, List<int>>() 
+            {
+                {"Иванов", new List<int>() { 5, 4, 3, 4, 3} },
+                {"Петров", new List<int>() { 3, 4, 2, 5, 4} },
+                {"Сидоров", new List<int>() { 5, 5, 4, 4, 5} }
+            };
+            Console.WriteLine("Введите фамилию: ");
+            string? name = Console.ReadLine();
+            Console.WriteLine($"Средний балл у {name}: {student.Where(student => student.Key == name).First().Value.Average()}");
             Console.WriteLine("-------");
         }
         static void RecursionTask()
