@@ -82,10 +82,18 @@ namespace ProjectTempalte
         static void BinaryTask()
         {
             Console.WriteLine("Binary Task");
-            Console.WriteLine("Здесь пока ничего нет"); // сотрите эту строку после выполнения условий из TODO ниже
+
             // TODO: реализовать функции чтения из бинароного файла и записи в него в Functions.cs.
             // Записать некоторое количество целых чисел в бинарный файл.
             // После прочитать этот же бинарный файл и вывести считанные значения на экран
+
+            List<int> data = new List<int>() { 10, 20, 30, 40 };
+            var path = Prefix + "BinText.txt";
+            Functions.WriteIntsToBinaryFile(path, data);
+            var list = Functions.ReadIntsFromBinaryFile(path);
+            for (int i = 0; i < list.Count; i++)
+                Console.Write($"{list[i]} ");
+            Console.WriteLine();
             Console.WriteLine("-------");
         }
         static void DictionaryTask()
